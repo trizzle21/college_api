@@ -36,7 +36,7 @@ Assuming we're in the project directory, the command to start the server should 
 
 
 ```bash
-./parsec backup.json 3210
+./college_api backup.json 3210
 ```
 
 where the first argument is the relative or absolute path to the backup file
