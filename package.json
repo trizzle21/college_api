@@ -1,0 +1,28 @@
+{
+  "name": "parsec_interview",
+  "version": "1.0.0",
+  "description": "college application api",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trizzle21/college_api.git"
+  },
+  "author": "Tyler Ross",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trizzle21/college_api/issues"
+  },
+  "homepage": "https://github.com/trizzle21/college_api#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "file-system": "^2.2.2",
+    "http": "0.0.0",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.12.5"
+  }
+}
