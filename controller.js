@@ -75,23 +75,25 @@ module.exports.getApplicants = function (req, res) {
 
             } else {
                 applicants = {}
-                model.application.find({}).sort({name: 1, score: -1}).exec(function(err, applications){
-
+                model.application.find({}).sort({name: 1, score: -1}).exec(function(err, applications){                    
                     for (i in applications) {
                         if(applications[i].name in applicants) {
                             applicants[applications[i].name].push({
                                                         "college": applications[i].college,
-                                                        "score":applications[i].score
+                                                        "score": applications[i].score
                                                         });
                         } else {
                             applicants[applications[i].name] = [{  
-                                                        "college":applications[i].college,
-                                                        "score":applications[i].score
+                                                        "college": applications[i].college,
+                                                        "score": applications[i].score
                                                            }]
                         }   
                     }
-                });
+
                 res.status(200).json(applicants);
+
+                });
+
 
             }
             
@@ -133,15 +135,15 @@ module.exports.getColleges = function (req, res) {
                 colleges = {}
                 model.application.find({}).sort({college: 1, score: -1}).exec(function(err, applications){
                     for (i in applications) {
-                         if(applications[i].college in colleges) {
+                        if (!applications) {
+                            res.status(404).json({ "error": "Not Found.",
+                                                   "message": "No applications exist"});                     
+                            return;
+                        } else if (applications[i].college in colleges) {
                             colleges[applications[i].college].push({
                                                                 "name":applications[i].name,
                                                                 "score":applications[i].score
                                                                 });
-                        } else if (!applications) {
-                            res.status(404).json({ "error": "Not Found.",
-                                                   "message": "No applications exist"});                     
-                            return;
                         } else {
                             colleges[applications[i].college] = [{  
                                                             "name":applications[i].name,
